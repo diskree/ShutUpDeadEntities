@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "${modId}",
+  "version": "${modVersion}",
+  "name": "${modName}",
+  "description": "Fix MC-94956.",
+  "authors": [
+    "${author}"
+  ],
+  "contact": {
+    "sources": "${repoUrl}"
+  },
+  "license": "MIT",
+  "icon": "assets/shutupdeadentities/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.diskree.shutupdeadentities.client.ShutUpDeadEntities"
+    ]
+  },
+  "mixins": [
+    "shutupdeadentities.mixins.json"
+  ],
+  "depends": {
+    "java": ">=${minJavaVersion}",
+    "minecraft": "=${minecraftVersion}",
+    "fabricloader": ">=${minLoaderVersion}",
+    "fabric-api": "*"
+  },
+  "accessWidener": "shutupdeadentities.accesswidener"
+}
