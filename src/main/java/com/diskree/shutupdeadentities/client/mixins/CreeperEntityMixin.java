@@ -18,7 +18,7 @@ public class CreeperEntityMixin {
     )
     public void playPrimed(CreeperEntity entity, SoundEvent sound, float volume, float pitch) {
         CreeperEntity creeperEntity = (CreeperEntity) (Object) this;
-        creeperEntity.getWorld()
+        creeperEntity.getEntityWorld()
             .playSoundFromEntity(null, creeperEntity, sound, creeperEntity.getSoundCategory(), volume, pitch);
     }
 }
