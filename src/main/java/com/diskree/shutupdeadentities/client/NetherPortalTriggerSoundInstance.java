@@ -32,7 +32,6 @@ public class NetherPortalTriggerSoundInstance extends PositionedSoundInstance im
             SoundCategory.AMBIENT,
             volume,
             pitch,
-            SoundInstance.createRandom(),
             false,
             0,
             SoundInstance.AttenuationType.NONE,

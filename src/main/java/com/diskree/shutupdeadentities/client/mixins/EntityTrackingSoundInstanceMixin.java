@@ -43,7 +43,6 @@ public class EntityTrackingSoundInstanceMixin {
         float volume,
         float pitch,
         Entity entity,
-        long seed,
         CallbackInfo ci
     ) {
         initialVolume = volume;
