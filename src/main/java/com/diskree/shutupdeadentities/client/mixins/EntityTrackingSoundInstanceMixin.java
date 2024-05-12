@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class EntityTrackingSoundInstanceMixin {
 
     @Unique
-    private static final int SMOOTH_FADE_OUT_TICKS = 30;
+    private static final int SMOOTH_FADE_OUT_TICKS = 20;
 
     @Unique
     private int smoothFadeOutTicksCounter = SMOOTH_FADE_OUT_TICKS;
