@@ -1,5 +1,6 @@
 package com.diskree.shutupdeadentities.client.mixins;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -31,6 +32,6 @@ public class EndermanEntityMixin {
         boolean useDistance
     ) {
         EndermanEntity endermanEntity = (EndermanEntity) (Object) this;
-        world.playSoundFromEntity(endermanEntity, sound, category, volume, pitch);
+        world.playSoundFromEntity(MinecraftClient.getInstance().player, endermanEntity, sound, category, volume, pitch);
     }
 }
