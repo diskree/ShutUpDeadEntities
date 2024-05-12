@@ -3,7 +3,7 @@
   "id": "${modId}",
   "version": "${modVersion}",
   "name": "${modName}",
-  "description": "Fix MC-94956.",
+  "description": "Enderman & Creeper will stop their sounds when they die.",
   "authors": [
     "${author}"
   ],
@@ -23,9 +23,8 @@
   ],
   "depends": {
     "java": ">=${minJavaVersion}",
-    "minecraft": "=${minecraftVersion}",
-    "fabricloader": ">=${minLoaderVersion}",
-    "fabric-api": "*"
+    "minecraft": ">=${minMinecraftVersion}",
+    "fabricloader": ">=${minLoaderVersion}"
   },
   "accessWidener": "shutupdeadentities.accesswidener"
 }
