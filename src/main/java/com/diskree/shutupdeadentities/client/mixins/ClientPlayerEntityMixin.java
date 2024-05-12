@@ -15,11 +15,11 @@ public class ClientPlayerEntityMixin {
         method = "updateNausea",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/sound/PositionedSoundInstance;ambient(Lnet/minecraft/sound/SoundEvent;FF)Lnet/minecraft/client/sound/PositionedSoundInstance;"
+            target = "Lnet/minecraft/client/sound/PositionedSoundInstance;master(Lnet/minecraft/sound/SoundEvent;F)Lnet/minecraft/client/sound/PositionedSoundInstance;"
         )
     )
-    public PositionedSoundInstance playPortal(SoundEvent sound, float pitch, float volume) {
+    public PositionedSoundInstance playPortal(SoundEvent sound, float volume) {
         ClientPlayerEntity clientPlayerEntity = (ClientPlayerEntity) (Object) this;
-        return new NetherPortalTriggerSoundInstance(clientPlayerEntity, sound, pitch, volume);
+        return new NetherPortalTriggerSoundInstance(clientPlayerEntity, sound, 0.25f, volume);
     }
 }

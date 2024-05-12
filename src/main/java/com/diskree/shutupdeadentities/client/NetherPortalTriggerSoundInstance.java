@@ -4,7 +4,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.sound.PositionedSoundInstance;
-import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.TickableSoundInstance;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -29,15 +28,15 @@ public class NetherPortalTriggerSoundInstance extends PositionedSoundInstance im
     ) {
         super(
             soundEvent.getId(),
-            SoundCategory.AMBIENT,
+            SoundCategory.MASTER,
             volume,
             pitch,
             false,
             0,
-            SoundInstance.AttenuationType.NONE,
-            0.0,
-            0.0,
-            0.0,
+            AttenuationType.NONE,
+            0.0f,
+            0.0f,
+            0.0f,
             true
         );
         this.player = player;

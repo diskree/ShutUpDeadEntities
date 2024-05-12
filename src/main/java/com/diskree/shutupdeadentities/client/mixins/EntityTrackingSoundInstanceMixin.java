@@ -1,6 +1,7 @@
 package com.diskree.shutupdeadentities.client.mixins;
 
 import net.minecraft.client.sound.EntityTrackingSoundInstance;
+import net.minecraft.client.sound.MovingSoundInstance;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundCategory;
@@ -16,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityTrackingSoundInstance.class)
-public class EntityTrackingSoundInstanceMixin {
+public abstract class EntityTrackingSoundInstanceMixin extends MovingSoundInstance {
 
     @Unique
     private static final int SMOOTH_FADE_OUT_TICKS = 20;
@@ -29,6 +30,10 @@ public class EntityTrackingSoundInstanceMixin {
 
     @Unique
     private float initialPitch = -1;
+
+    protected EntityTrackingSoundInstanceMixin(SoundEvent sound, SoundCategory soundCategory) {
+        super(sound, soundCategory);
+    }
 
     @Shadow
     @Final
@@ -59,17 +64,18 @@ public class EntityTrackingSoundInstanceMixin {
         )
     )
     public boolean stopWhenLivingEntityDead(Entity entity) {
-        return entity instanceof LivingEntity livingEntity ? livingEntity.isDead() : this.entity.removed;
+        return entity instanceof LivingEntity livingEntity ? !livingEntity.isAlive() : this.entity.removed;
     }
 
     @Redirect(
         method = "tick",
         at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;setDone()V"
+            value = "FIELD",
+            target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;done:Z",
+            opcode = Opcodes.PUTFIELD
         )
     )
-    public void smoothFadeOut(EntityTrackingSoundInstance soundInstance) {
+    public void smoothFadeOut(EntityTrackingSoundInstance instance, boolean value) {
         EntityTrackingSoundInstance entityTrackingSoundInstance = (EntityTrackingSoundInstance) (Object) this;
         if (smoothFadeOutTicksCounter >= 0) {
             float progress = (float) smoothFadeOutTicksCounter / SMOOTH_FADE_OUT_TICKS;
@@ -77,7 +83,7 @@ public class EntityTrackingSoundInstanceMixin {
             entityTrackingSoundInstance.pitch = initialPitch * progress;
             smoothFadeOutTicksCounter--;
         } else {
-            soundInstance.setDone();
+            done = value;
         }
     }
 }
