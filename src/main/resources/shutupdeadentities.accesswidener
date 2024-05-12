@@ -7,4 +7,4 @@ accessible method net/minecraft/client/sound/MovingSoundInstance setDone ()V
 
 accessible method net/minecraft/entity/LivingEntity getDeathSound ()Lnet/minecraft/sound/SoundEvent;
 
-accessible field net/minecraft/entity/Entity inNetherPortal Z
+accessible field net/minecraft/entity/Entity inPortal Z
