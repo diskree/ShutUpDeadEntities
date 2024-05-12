@@ -33,18 +33,41 @@ public class EntityTrackingSoundInstanceMixin {
     @Final
     private Entity entity;
 
-    @Inject(method = "<init>", at = @At("RETURN"))
-    private void init(SoundEvent sound, SoundCategory category, float volume, float pitch, Entity entity, long seed, CallbackInfo ci) {
+    @Inject(
+        method = "<init>",
+        at = @At("RETURN")
+    )
+    private void init(
+        SoundEvent sound,
+        SoundCategory category,
+        float volume,
+        float pitch,
+        Entity entity,
+        long seed,
+        CallbackInfo ci
+    ) {
         initialVolume = volume;
         initialPitch = pitch;
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isRemoved()Z"))
+    @Redirect(
+        method = "tick",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/entity/Entity;isRemoved()Z"
+        )
+    )
     public boolean stopWhenLivingEntityDead(Entity entity) {
         return entity instanceof LivingEntity livingEntity ? livingEntity.isDead() : this.entity.isRemoved();
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;setDone()V"))
+    @Redirect(
+        method = "tick",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;setDone()V"
+        )
+    )
     public void smoothFadeOut(EntityTrackingSoundInstance soundInstance) {
         EntityTrackingSoundInstance entityTrackingSoundInstance = (EntityTrackingSoundInstance) (Object) this;
         if (smoothFadeOutTicksCounter >= 0) {
