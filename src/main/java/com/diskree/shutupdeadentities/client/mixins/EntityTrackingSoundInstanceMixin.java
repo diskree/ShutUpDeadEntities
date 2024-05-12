@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,7 +35,7 @@ public class EntityTrackingSoundInstanceMixin {
     private Entity entity;
 
     @Inject(
-        method = "<init>",
+        method = "<init>(Lnet/minecraft/sound/SoundEvent;Lnet/minecraft/sound/SoundCategory;FFLnet/minecraft/entity/Entity;)V",
         at = @At("RETURN")
     )
     private void init(
@@ -52,12 +53,13 @@ public class EntityTrackingSoundInstanceMixin {
     @Redirect(
         method = "tick",
         at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/entity/Entity;isRemoved()Z"
+            value = "FIELD",
+            target = "Lnet/minecraft/entity/Entity;removed:Z",
+            opcode = Opcodes.GETFIELD
         )
     )
     public boolean stopWhenLivingEntityDead(Entity entity) {
-        return entity instanceof LivingEntity livingEntity ? livingEntity.isDead() : this.entity.isRemoved();
+        return entity instanceof LivingEntity livingEntity ? livingEntity.isDead() : this.entity.removed;
     }
 
     @Redirect(
