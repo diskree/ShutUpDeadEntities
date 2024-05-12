@@ -3,7 +3,7 @@
   "id": "${modId}",
   "version": "${modVersion}",
   "name": "${modName}",
-  "description": "Enderman & Creeper will stop their sounds when they die.",
+  "description": "Enderman & Creeper will stop their sounds when they die + Nether portal sound fix.",
   "authors": [
     "${author}"
   ],
