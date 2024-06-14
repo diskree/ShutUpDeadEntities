@@ -53,7 +53,7 @@ public class NetherPortalTriggerSoundInstance extends PositionedSoundInstance im
 
     @Override
     public void tick() {
-        if (player == null || !player.inNetherPortal) {
+        if (player == null || player.portalManager != null && !player.portalManager.isInPortal()) {
             if (smoothFadeOutTicksCounter >= 0) {
                 float progress = (float) smoothFadeOutTicksCounter / SMOOTH_FADE_OUT_TICKS;
                 volume = initialVolume * progress;
