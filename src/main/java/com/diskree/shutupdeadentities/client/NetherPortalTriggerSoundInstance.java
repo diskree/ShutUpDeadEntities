@@ -28,7 +28,7 @@ public class NetherPortalTriggerSoundInstance extends PositionedSoundInstance im
         float volume
     ) {
         super(
-            soundEvent.getId(),
+            soundEvent.id(),
             SoundCategory.AMBIENT,
             volume,
             pitch,
