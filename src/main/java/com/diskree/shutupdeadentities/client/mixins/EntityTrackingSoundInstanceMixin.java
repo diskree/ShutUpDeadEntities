@@ -61,22 +61,22 @@ public class EntityTrackingSoundInstanceMixin {
         return entity instanceof LivingEntity livingEntity ? livingEntity.isDead() : this.entity.isRemoved();
     }
 
-//    @Redirect(
-//        method = "tick",
-//        at = @At(
-//            value = "INVOKE",
-//            target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;setDone()V"
-//        )
-//    )
-//    public void smoothFadeOut(EntityTrackingSoundInstance soundInstance) {
-//        EntityTrackingSoundInstance entityTrackingSoundInstance = (EntityTrackingSoundInstance) (Object) this;
-//        if (smoothFadeOutTicksCounter >= 0) {
-//            float progress = (float) smoothFadeOutTicksCounter / SMOOTH_FADE_OUT_TICKS;
-//            entityTrackingSoundInstance.volume = initialVolume * progress;
-//            entityTrackingSoundInstance.pitch = initialPitch * progress;
-//            smoothFadeOutTicksCounter--;
-//        } else {
-//            soundInstance.setDone();
-//        }
-//    }
+    @Redirect(
+        method = "tick",
+        at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/client/sound/EntityTrackingSoundInstance;setDone()V"
+        )
+    )
+    public void smoothFadeOut(EntityTrackingSoundInstance soundInstance) {
+        EntityTrackingSoundInstance entityTrackingSoundInstance = (EntityTrackingSoundInstance) (Object) this;
+        if (smoothFadeOutTicksCounter >= 0) {
+            float progress = (float) smoothFadeOutTicksCounter / SMOOTH_FADE_OUT_TICKS;
+            entityTrackingSoundInstance.volume = initialVolume * progress;
+            entityTrackingSoundInstance.pitch = initialPitch * progress;
+            smoothFadeOutTicksCounter--;
+        } else {
+            soundInstance.setDone();
+        }
+    }
 }
