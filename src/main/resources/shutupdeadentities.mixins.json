@@ -2,15 +2,12 @@
   "required": true,
   "package": "com.diskree.shutupdeadentities.client.mixins",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [
-    "CreeperEntityMixin",
-    "EndermanEntityMixin"
-  ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
     "ClientPlayerEntityMixin",
+    "ClientWorldMixin",
     "EntityTrackingSoundInstanceMixin"
   ]
 }
