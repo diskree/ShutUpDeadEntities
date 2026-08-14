@@ -3,7 +3,7 @@
   "id": "${modId}",
   "version": "${modVersion}",
   "name": "${modName}",
-  "description": "Enderman & Creeper will stop their sounds when they die + Nether portal sound fix.",
+  "description": "A client-side mod that smoothly fades out mob sounds upon death. Mutes dead mobs by fading, silencing, and stopping persistent ghost audio from Endermens, Creepers and Nether portals.",
   "authors": [
     "${author}"
   ],
@@ -15,7 +15,7 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.diskree.shutupdeadentities.client.ShutUpDeadEntities"
+      "io.github.diskria.shutupdeadentities.client.ShutUpDeadEntities"
     ]
   },
   "mixins": [

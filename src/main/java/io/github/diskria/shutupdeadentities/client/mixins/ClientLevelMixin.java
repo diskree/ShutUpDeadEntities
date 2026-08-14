@@ -1,4 +1,4 @@
-package com.diskree.shutupdeadentities.client.mixins;
+package io.github.diskria.shutupdeadentities.client.mixins;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -47,7 +47,7 @@ public abstract class ClientLevelMixin {
         SoundSource source,
         float volume,
         float pitch,
-        boolean useDistance,
+        boolean distanceDelay,
         long seed,
         CallbackInfo ci
     ) {

@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.diskree.shutupdeadentities.client.mixins",
+  "package": "io.github.diskria.shutupdeadentities.client.mixins",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1

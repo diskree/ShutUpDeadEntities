@@ -1,4 +1,4 @@
-package com.diskree.shutupdeadentities.client;
+package io.github.diskria.shutupdeadentities.client;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

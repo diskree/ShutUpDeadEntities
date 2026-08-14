@@ -1,6 +1,6 @@
-package com.diskree.shutupdeadentities.client.mixins;
+package io.github.diskria.shutupdeadentities.client.mixins;
 
-import com.diskree.shutupdeadentities.client.PortalTriggerSoundInstance;
+import io.github.diskria.shutupdeadentities.client.PortalTriggerSoundInstance;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.client.player.LocalPlayer;
